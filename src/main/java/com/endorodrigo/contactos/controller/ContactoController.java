@@ -61,6 +61,17 @@ public class ContactoController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "eliminar/{id}", method = RequestMethod.GET)
+    public String eliminar(@PathVariable(value = "id") Integer idContacto) {
+        Contacto contacto = contactoService.findById(idContacto);
+        if (contacto != null) {
+            contactoService.deleteById(idContacto);
+            logger.info("Eliminando contacto: " + contacto);
+        }
+
+        return "redirect:/";
+    }
+
 
 
 }

@@ -19,7 +19,7 @@ public class Contacto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String nombre;
     private String celular;
     private String email;

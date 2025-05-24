@@ -2,9 +2,11 @@ package com.endorodrigo.contactos.service;
 
 import com.endorodrigo.contactos.model.Contacto;
 import com.endorodrigo.contactos.repository.ContactoRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ContactoService implements IContactoService{
 
     private ContactoRepository contactoRepository;

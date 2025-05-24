@@ -24,15 +24,15 @@
             </thead>
             <tbody>
             <tr th:each="contacto: ${contactos}">
-                <th th:text="${contacto.idContacto}" scope="row"></th>
+                <th th:text="${contacto.id}" scope="row"></th>
                 <td th:text="${contacto.nombre}"></td>
                 <td th:text="${contacto.celular}"></td>
                 <td th:text="${contacto.email}"></td>
                 <td class="text-center">
                     <div class="container">
-                        <a th:href="@{/editar/{id}(id=${contacto.idContacto})}"
+                        <a th:href="@{/editar/{id}(id=${contacto.id})}"
                            class="btn btn-warning btn-sm me-3">Editar</a>
-                        <a th:href="@{/eliminar/{id}(id=${contacto.idContacto})}"
+                        <a th:href="@{/eliminar/{id}(id=${contacto.id})}"
                            class="btn btn-danger btn-sm">Eliminar</a>
                     </div>
                 </td>

@@ -12,7 +12,7 @@
   </div>
   <div class="container">
     <form action="/editar" th:object="${contacto}" method="post">
-      <input type="hidden" th:field="*{idContacto}"/>
+      <input type="hidden" th:field="*{id}"/>
       <div class="mb-3">
         <label for="nombre" class="form-label">Nombre</label>
         <input type="text" class="form-control"

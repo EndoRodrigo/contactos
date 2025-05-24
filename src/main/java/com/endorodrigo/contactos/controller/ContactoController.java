@@ -6,9 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,5 +41,26 @@ public class ContactoController {
         //return "index"; no muestra el listado de clientes
         return "redirect:/";
     }
+
+    @RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
+    //@GetMapping("/editar/{id}")
+    public String mostrarEditar(@PathVariable(value = "id") Integer idContacto,
+                                ModelMap modelo){
+        logger.info("Mostrando el id contacto: " + idContacto);
+        Contacto contacto = contactoService.findById(idContacto);
+        logger.info("Contacto a editar (mostrar): " + contacto);
+        modelo.put("contacto", contacto);
+        return "editar"; //editar.html
+    }
+
+    @RequestMapping(value = "editar", method = RequestMethod.POST)
+    public String editar(@ModelAttribute("contacto") Contacto contacto) {
+        logger.debug("Agregando contacto: " + contacto.toString());
+        contactoService.save(contacto);
+        //return "index"; no muestra el listado de clientes
+        return "redirect:/";
+    }
+
+
 
 }

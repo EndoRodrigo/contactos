@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,6 +29,19 @@ public class ContactoController {
         logger.debug("Contactos de la lista: " + contactos.toString());
         model.put("contactos", contactos);
         return "index";
+    }
+
+    @RequestMapping(value = "agregar", method = RequestMethod.GET)
+    public String agregar(ModelMap model) {
+        return "agregar";
+    }
+
+    @RequestMapping(value = "agregar", method = RequestMethod.POST)
+    public String agregar(@ModelAttribute("contactoForma") Contacto contacto) {
+        logger.debug("Agregando contacto: " + contacto.toString());
+        contactoService.save(contacto);
+        //return "index"; no muestra el listado de clientes
+        return "redirect:/";
     }
 
 }
